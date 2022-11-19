@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<b> Hello </b>
+<script>
+    function example() {
+        let firstName = "Pawel"
+        let lastName = "Pustelnik"
+        function printFullName() {
+            console.log(`${firstName} ${lastName}`)
+        }
+        return printFullName
+    }
+    let exampleFun = example()
+    exampleFun()
+        // Zad 1: Stwórz tablicę 50 elementową, wypełnij ją losowymi liczbami całkowitymi od 1 do 1000, wypisz je, następnie wypisz wszystkie parzyste liczby. Do uzyskania losowej liczby parzystej użyj Math.random oraz Math.floor
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function task1() {
+        let randomArray = []
+        let evenArray =[]
+        for (let i = 0; i < 50; i++) {
+            let randomNumber = getRandomNumber(1,1000)
+            randomArray.push(randomNumber)
+            if (randomNumber % 2 === 0) {
+                evenArray.push(randomNumber)
+            }
+        }
+        console.log("Array of random numbers:")
+        randomArray.forEach(function (element) {
+            console.log(element)
+        })
+        console.log("Array of even numbers:")
+        evenArray.forEach(function (element) {
+            console.log(element)
+        })
+    }
+
+    console.log(task1())
+
+    let random = Math.random()
+    console.log(`${random}`)
+    // Zad 2: Zaimplementuj funkcję, która:
+    // - znajdzie kobiety
+    // - znajdzie osoby starsze niż 30 lat
+    // - znajdzie osoby z trójką dzieci
+    // - znajdzie osoby z dwójką córek
+    // - znajdzie osoby z dwójką dzieci, dzieci muszą być starsze niż 10 lat
+    // - znajdzie osoby i dzieci, młodsze niż 20 lat
+    let people = [
+        {   firstName: 'Anna', lastName: 'Nowak', gender: 'F', age: 33, childs: [
+                { firstName: 'Piotr', lastName: 'Nowak', gender: 'M', age: 15 },
+                { firstName: 'Natalia', lastName: 'Nowak', gender: 'F', age: 11 }
+            ]   },
+        {   firstName: 'Dagmara', lastName: 'Kowalska', gender: 'F', age: 50, childs: []    },
+        {   firstName: 'Andrzej', lastName: 'Wietrzyński', gender: 'M', age: 36, childs: [
+                { firstName: 'Piotr', lastName: 'Nowak', gender: 'M', age: 15 },
+                { firstName: 'Natalia', lastName: 'Nowak', gender: 'F', age: 11 }
+            ] },
+        {   firstName: 'Robert', lastName: 'Andrzejewski', gender: 'M', age: 35, childs: [
+                { firstName: 'Zofia', lastName: 'Andrzejewska', gender: 'F', age: 3 },
+                { firstName: 'Natalia', lastName: 'Andrzejewska', gender: 'F', age: 8 }
+            ] },
+        {   firstName: 'Jadwiga', lastName: 'Słoczyńska', gender: 'F', age: 48, childs: [] },
+        {   firstName: 'Judyta', lastName: 'Nahita', gender: 'F', age: 23, childs: [
+                { firstName: 'Ireneusz', lastName: 'Nahita', gender: 'M', age: 5 }
+            ] },
+        {   firstName: 'Zuzanna', lastName: 'Topolewska', gender: 'F', age: 45, childs: [
+                { firstName: 'Ireneusz', lastName: 'Nahita', gender: 'M', age: 16 },
+                { firstName: 'Justyna', lastName: 'Nahita', gender: 'F', age: 3 },
+                { firstName: 'Milena', lastName: 'Nahita', gender: 'F', age: 9 }
+            ] },
+        {   firstName: 'Adam', lastName: 'Daleki', gender: 'M', age: 32, childs: [] },
+        {   firstName: 'Sebastian', lastName: 'Dudkiewicz', gender: 'M', age: 19, childs: [] },
+        {   firstName: 'Franciszek', lastName: 'Sypieczyk', gender: 'M', age: 51, childs: [] },
+    ];
+    console.log(people)
+    function findWoman(people) {
+        let women = []
+        for (let i = 0; i < people.length; i++) {
+            let person = people[i]
+            if (person.gender === 'F') {
+                women.push(person)
+            }
+        }
+        return women
+    }
+    let woman = findWoman(people)
+    console.log(woman)
+    
+    // Zad 3: Wykorzystując domknięcie zaimplementuj licznik, który udostępnia funkcjonalnośc inkrementacji, dekrementacji, resetu i pobrania wartości. Counter powinien być inicjalizowany wartością, jeżeli nie podano wartości inicjalizacyjnej przyjmijmy wartość 1
+</script>
+</body>
+</html>
