@@ -22,6 +22,12 @@
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    function printArray(array) {
+        array.forEach(function (element) {
+            console.log(element)
+        })
+    }
+
     function task1() {
         let randomArray = []
         let evenArray =[]
@@ -33,16 +39,12 @@
             }
         }
         console.log("Array of random numbers:")
-        randomArray.forEach(function (element) {
-            console.log(element)
-        })
+        printArray(randomArray)
         console.log("Array of even numbers:")
-        evenArray.forEach(function (element) {
-            console.log(element)
-        })
+        printArray(evenArray)
     }
 
-    console.log(task1())
+    task1()
 
     let random = Math.random()
     console.log(`${random}`)
@@ -81,18 +83,66 @@
         {   firstName: 'Franciszek', lastName: 'Sypieczyk', gender: 'M', age: 51, childs: [] },
     ];
     console.log(people)
-    function findWoman(people) {
+
+    function findPeople(people) {
         let women = []
+        let olderThan30 = []
+        let withThreeChildren = []
+        let withTwoDaughters = []
+        let withTwoChildrenOlderThan10 = []
+        let youngerThan20 = []
+        let countDaughters = 0
+        let countChildrenOlderThan10 = 0
         for (let i = 0; i < people.length; i++) {
             let person = people[i]
             if (person.gender === 'F') {
                 women.push(person)
             }
+            if (person.age > 30) {
+                olderThan30.push(person)
+            }
+            if (person.childs.length > 2) {
+                withThreeChildren.push(person)
+            }
+            if (person.age < 20) {
+                youngerThan20.push(person)
+            }
+            for (let j = 0; j < person.childs.length; j++) {
+                let child = person.childs[j]
+                if (child.age > 10) {
+                  countChildrenOlderThan10++
+                }
+                if (child.gender === 'F') {
+                    countDaughters++
+                }
+                if (child.age < 20) {
+                    youngerThan20.push(child)
+                }
+            }
+            if (countDaughters === 2) {
+                withTwoDaughters.push(person)
+            }
+            if (countChildrenOlderThan10 === 2) {
+                withTwoChildrenOlderThan10.push(person)
+            }
+            countDaughters = 0
+            countChildrenOlderThan10 = 0
         }
-        return women
+        console.log("List of women")
+        printArray(women)
+        console.log("List of people older than 30")
+        printArray(olderThan30)
+        console.log("List of people with 3 children")
+        printArray(withThreeChildren)
+        console.log("List of people with 2 daughters")
+        printArray(withTwoDaughters)
+        console.log("List of people with 2 children older than 10")
+        printArray(withTwoChildrenOlderThan10)
+        console.log("List of people younger than 20")
+        printArray(youngerThan20)
     }
-    let woman = findWoman(people)
-    console.log(woman)
+    findPeople(people)
+
     
     // Zad 3: Wykorzystując domknięcie zaimplementuj licznik, który udostępnia funkcjonalnośc inkrementacji, dekrementacji, resetu i pobrania wartości. Counter powinien być inicjalizowany wartością, jeżeli nie podano wartości inicjalizacyjnej przyjmijmy wartość 1
 </script>
