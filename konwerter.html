@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Konwerter jednostek miary</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="konwerter.js"></script>
+</head>
+<body>
+<h1>Konwerter jednostek miary</h1>
+<form>
+    <label for="inputValue">Wprowadź wartość:</label>
+    <input type="number" id="inputValue" min="0">
+
+    <label for="inputUnit">Wybierz jednostkę:</label>
+    <select id="inputUnit">
+        <option value="m">Metry</option>
+        <option value="km">Kilometry</option>
+        <option value="mm">Milimetry</option>
+    </select>
+
+    <label for="outputUnit">Wybierz jednostkę wyjściową:</label>
+    <select id="outputUnit">
+        <option value="m">Metry</option>
+        <option value="km">Kilometry</option>
+        <option value="mm">Milimetry</option>
+    </select>
+
+    <button type="button" id="convertButton">Przelicz</button>
+</form>
+
+<h2>Poprzednie przeliczenia:</h2>
+<ul id="previousCalculations"></ul>
+
+</body>
+</html>
